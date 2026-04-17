@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
 
@@ -13,12 +14,24 @@ const serviceLabels: Record<string, string> = {
   strategy: "Growth & Digital Strategy",
 };
 
+const budgetLabels: Record<string, string> = {
+  "1k-5k": "$1,000 – $5,000",
+  "5k-10k": "$5,000 – $10,000",
+  "10k-25k": "$10,000 – $25,000",
+  "25k-50k": "$25,000 – $50,000",
+  "50k-100k": "$50,000 – $100,000",
+  "100k+": "$100,000+",
+  unsure: "Not sure yet",
+};
+
 export default function Contact() {
+  const router = useRouter();
   const [form, setForm] = useState({
     name: "",
     email: "",
     company: "",
     service: "",
+    budget: "",
     message: "",
   });
   const [formStarted, setFormStarted] = useState(false);
@@ -34,9 +47,11 @@ export default function Contact() {
     e.preventDefault();
 
     const serviceLabel = serviceLabels[form.service] || form.service || "Not specified";
+    const budgetLabel = budgetLabels[form.budget] || form.budget || "Not specified";
 
     track("form_submit", {
       service: serviceLabel,
+      budget: budgetLabel,
       has_company: Boolean(form.company),
     });
 
@@ -45,10 +60,14 @@ export default function Contact() {
     );
 
     const body = encodeURIComponent(
-      `Hi Gigadroom,\n\nHere are my project details:\n\nName: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company || "—"}\nService Interest: ${serviceLabel}\n\nProject Overview:\n${form.message}\n\n---\nSent via gigadroom.com`
+      `Hi Gigadroom,\n\nHere are my project details:\n\nName: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company || "—"}\nService Interest: ${serviceLabel}\nBudget: ${budgetLabel}\n\nProject Overview:\n${form.message}\n\n---\nSent via gigadroom.com`
     );
 
-    window.location.href = `mailto:hi@gigadroom.com?subject=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:hi@gigadroom.com?subject=${subject}&body=${body}`;
+
+    // Open the mail client without navigating away, then redirect to /done
+    window.open(mailtoUrl, "_self");
+    setTimeout(() => router.push("/done"), 300);
   };
 
   return (
@@ -196,28 +215,55 @@ export default function Contact() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
-                    Service Interest
-                  </label>
-                  <select
-                    value={form.service}
-                    onChange={(e) => {
-                      setForm({ ...form, service: e.target.value });
-                      if (e.target.value) {
-                        track("service_selected", { service: serviceLabels[e.target.value] || e.target.value });
-                      }
-                    }}
-                    className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm focus:outline-none focus:border-[#0F0F0F] transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="">Select a service...</option>
-                    <option value="ai">AI Systems & Automation</option>
-                    <option value="digital">Digital Presence & Infrastructure</option>
-                    <option value="design">Product Design</option>
-                    <option value="dev">App & Web Development</option>
-                    <option value="full">End-to-End Product Delivery</option>
-                    <option value="strategy">Growth & Digital Strategy</option>
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
+                      Service Interest
+                    </label>
+                    <select
+                      value={form.service}
+                      onChange={(e) => {
+                        setForm({ ...form, service: e.target.value });
+                        if (e.target.value) {
+                          track("service_selected", { service: serviceLabels[e.target.value] || e.target.value });
+                        }
+                      }}
+                      className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm focus:outline-none focus:border-[#0F0F0F] transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="">Select a service...</option>
+                      <option value="ai">AI Systems & Automation</option>
+                      <option value="digital">Digital Presence & Infrastructure</option>
+                      <option value="design">Product Design</option>
+                      <option value="dev">App & Web Development</option>
+                      <option value="full">End-to-End Product Delivery</option>
+                      <option value="strategy">Growth & Digital Strategy</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
+                      Budget Range
+                    </label>
+                    <select
+                      value={form.budget}
+                      onChange={(e) => {
+                        setForm({ ...form, budget: e.target.value });
+                        if (e.target.value) {
+                          track("budget_selected", { budget: budgetLabels[e.target.value] || e.target.value });
+                        }
+                      }}
+                      className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm focus:outline-none focus:border-[#0F0F0F] transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="">Select a range...</option>
+                      <option value="1k-5k">$1,000 – $5,000</option>
+                      <option value="5k-10k">$5,000 – $10,000</option>
+                      <option value="10k-25k">$10,000 – $25,000</option>
+                      <option value="25k-50k">$25,000 – $50,000</option>
+                      <option value="50k-100k">$50,000 – $100,000</option>
+                      <option value="100k+">$100,000+</option>
+                      <option value="unsure">Not sure yet</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
