@@ -179,6 +179,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakarta.variable} scroll-smooth`}>
       <head>
+        {/* Google Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17999645606"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17999645606');
+          `}
+        </Script>
+        {/* JSON-LD */}
         <Script
           id="json-ld"
           type="application/ld+json"
