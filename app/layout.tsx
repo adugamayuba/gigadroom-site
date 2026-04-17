@@ -74,7 +74,7 @@ export const metadata: Metadata = {
       "From idea to reality. We build AI systems, digital infrastructure, and end-to-end products for businesses ready to lead. Full-service consulting & delivery.",
     images: [
       {
-        url: `${siteUrl}/og-image.png`,
+        url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Gigadroom — From Idea to Reality",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     title: "Gigadroom — AI Systems, Digital Products & Consulting",
     description:
       "From idea to reality. We build AI systems, digital infrastructure, and end-to-end products for businesses ready to lead.",
-    images: [`${siteUrl}/og-image.png`],
+    images: [`${siteUrl}/opengraph-image`],
     creator: "@gigadroom",
     site: "@gigadroom",
   },
