@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@vercel/analytics";
 import Logo from "./Logo";
 
 const navLinks = [
@@ -49,6 +50,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={() => track("nav_click", { label: link.label })}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isInverted
                     ? "text-white/70 hover:text-white"
@@ -63,6 +65,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="mailto:hi@gigadroom.com"
+              onClick={() => track("contact_click", { method: "email", location: "navbar" })}
               className={`text-sm transition-colors ${
                 isInverted ? "text-white/60 hover:text-white" : "text-[#888] hover:text-[#0F0F0F]"
               }`}
@@ -71,6 +74,7 @@ export default function Navbar() {
             </a>
             <a
               href="#contact"
+              onClick={() => track("cta_click", { label: "Get Started", location: "navbar" })}
               className={`text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 ${
                 isInverted
                   ? "bg-white text-[#0F0F0F] hover:bg-white/90"
@@ -121,7 +125,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => { setMobileOpen(false); track("nav_click", { label: link.label, device: "mobile" }); }}
                   className="text-[#0F0F0F] font-medium text-base"
                 >
                   {link.label}
@@ -129,7 +133,7 @@ export default function Navbar() {
               ))}
               <a
                 href="#contact"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => { setMobileOpen(false); track("cta_click", { label: "Get Started", location: "navbar_mobile" }); }}
                 className="mt-2 text-center bg-[#0F0F0F] text-white font-semibold px-5 py-3 rounded-full"
               >
                 Get Started

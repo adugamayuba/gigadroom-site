@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 const serviceLabels: Record<string, string> = {
   ai: "AI Systems & Automation",
@@ -20,11 +21,24 @@ export default function Contact() {
     service: "",
     message: "",
   });
+  const [formStarted, setFormStarted] = useState(false);
+
+  const handleFormStart = () => {
+    if (!formStarted) {
+      setFormStarted(true);
+      track("form_start");
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const serviceLabel = serviceLabels[form.service] || form.service || "Not specified";
+
+    track("form_submit", {
+      service: serviceLabel,
+      has_company: Boolean(form.company),
+    });
 
     const subject = encodeURIComponent(
       `Project Inquiry${form.company ? ` — ${form.company}` : ""}${form.name ? ` (${form.name})` : ""}`
@@ -80,19 +94,21 @@ export default function Contact() {
                   <p className="text-[10px] text-[#888] font-semibold tracking-[0.15em] uppercase mb-1">
                     Email
                   </p>
-                  <a
-                    href="mailto:hi@gigadroom.com"
-                    className="text-[#0F0F0F] font-medium text-base hover:opacity-60 transition-opacity"
-                  >
-                    hi@gigadroom.com
-                  </a>
+                    <a
+                  href="mailto:hi@gigadroom.com"
+                  onClick={() => track("contact_click", { method: "email", location: "contact_section" })}
+                  className="text-[#0F0F0F] font-medium text-base hover:opacity-60 transition-opacity"
+                >
+                  hi@gigadroom.com
+                </a>
                 </div>
                 <div>
                   <p className="text-[10px] text-[#888] font-semibold tracking-[0.15em] uppercase mb-1">
                     Phone / WhatsApp
                   </p>
-                  <a
+                    <a
                     href="tel:+12763000906"
+                    onClick={() => track("contact_click", { method: "phone", location: "contact_section" })}
                     className="text-[#0F0F0F] font-medium text-base hover:opacity-60 transition-opacity"
                   >
                     +1 (276) 300-0906
@@ -146,6 +162,7 @@ export default function Contact() {
                       required
                       type="text"
                       value={form.name}
+                      onFocus={handleFormStart}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Your name"
                       className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm placeholder:text-[#BEBEBE] focus:outline-none focus:border-[#0F0F0F] transition-all"
@@ -185,7 +202,12 @@ export default function Contact() {
                   </label>
                   <select
                     value={form.service}
-                    onChange={(e) => setForm({ ...form, service: e.target.value })}
+                    onChange={(e) => {
+                      setForm({ ...form, service: e.target.value });
+                      if (e.target.value) {
+                        track("service_selected", { service: serviceLabels[e.target.value] || e.target.value });
+                      }
+                    }}
                     className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm focus:outline-none focus:border-[#0F0F0F] transition-all appearance-none cursor-pointer"
                   >
                     <option value="">Select a service...</option>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -187,6 +188,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-white text-[#0F0F0F] antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );

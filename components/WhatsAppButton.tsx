@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -36,6 +37,7 @@ export default function WhatsAppButton() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => track("whatsapp_click", { location: "tooltip" })}
               className="mt-3 block text-center text-xs font-semibold bg-[#25D366] text-white px-3 py-2 rounded-lg hover:bg-[#20c05c] transition-colors"
             >
               Start Chat
@@ -48,7 +50,11 @@ export default function WhatsAppButton() {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1.5, type: "spring", stiffness: 200, damping: 20 }}
-        onClick={() => setShowTooltip(!showTooltip)}
+        onClick={() => {
+          const next = !showTooltip;
+          setShowTooltip(next);
+          if (next) track("whatsapp_click", { location: "fab" });
+        }}
         className="relative w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20c05c] shadow-xl shadow-black/15 flex items-center justify-center transition-all duration-200 hover:scale-110"
         aria-label="Chat on WhatsApp"
       >

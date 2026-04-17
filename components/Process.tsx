@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 const steps = [
   {
@@ -108,6 +109,7 @@ export default function Process() {
           </div>
           <a
             href="#contact"
+            onClick={() => track("cta_click", { label: "Book a Free Call", location: "process_banner" })}
             className="flex-shrink-0 bg-white text-[#0F0F0F] font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-200 whitespace-nowrap"
           >
             Book a Free Call

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { track } from "@vercel/analytics";
 
 const services = [
   {
@@ -91,7 +92,8 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="group border border-[#E5E5E5] rounded-2xl overflow-hidden bg-white hover:shadow-xl hover:shadow-black/6 transition-all duration-400 cursor-default"
+              onClick={() => track("service_card_click", { service: service.title, number: service.number })}
+              className="group border border-[#E5E5E5] rounded-2xl overflow-hidden bg-white hover:shadow-xl hover:shadow-black/6 transition-all duration-400 cursor-pointer"
             >
               {/* Image */}
               <div className="relative h-52 overflow-hidden bg-[#F0F0EE]">

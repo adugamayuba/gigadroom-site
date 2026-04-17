@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { track } from "@vercel/analytics";
 
 export default function Hero() {
   return (
@@ -53,12 +54,14 @@ export default function Hero() {
         >
           <a
             href="#contact"
+            onClick={() => track("cta_click", { label: "Start a Project", location: "hero" })}
             className="bg-white text-[#0F0F0F] font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-200 text-base"
           >
             Start a Project
           </a>
           <a
             href="#services"
+            onClick={() => track("cta_click", { label: "Explore Services", location: "hero" })}
             className="text-white/80 hover:text-white font-medium px-8 py-4 rounded-full border border-white/25 hover:border-white/50 transition-all duration-200 text-base"
           >
             Explore Services
