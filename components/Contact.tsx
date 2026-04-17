@@ -76,18 +76,7 @@ export default function Contact() {
       has_company: Boolean(form.company),
     });
 
-    const subject = encodeURIComponent(
-      `Project Inquiry${form.company ? ` — ${form.company}` : ""}${form.name ? ` (${form.name})` : ""}`
-    );
-
-    const body = encodeURIComponent(
-      `Hi Gigadroom,\n\nHere are my project details:\n\nName: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company || "—"}\nService Interest: ${serviceLabel}\nBudget: ${budgetLabel}\n\nProject Overview:\n${form.message}\n\n---\nSent via gigadroom.com`
-    );
-
-    const mailtoUrl = `mailto:hi@gigadroom.com?subject=${subject}&body=${body}`;
-
-    window.open(mailtoUrl, "_self");
-    setTimeout(() => router.push("/done"), 300);
+    router.push("/done");
   };
 
   return (
@@ -309,7 +298,7 @@ export default function Contact() {
                 </button>
 
                 <p className="text-center text-xs text-[#AAAAAA]">
-                  Clicking send will open your email client with all details pre-filled.
+                  We&apos;ll get back to you within 24 hours.
                 </p>
               </form>
             </div>
