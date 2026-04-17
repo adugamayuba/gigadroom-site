@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 const pillars = [
@@ -18,19 +17,16 @@ const pillars = [
   {
     title: "Built to Convert",
     description:
-      "Design, copy, and architecture are all calibrated to one outcome: turning visitors into customers and users into advocates.",
+      "Design, copy, and architecture are calibrated to one outcome: turning visitors into customers and users into advocates.",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-28 px-6 relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c5cfc]/5 rounded-full blur-[150px] pointer-events-none" />
-
+    <section id="about" className="py-28 px-6 bg-[#F7F7F5]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left — Image / Visual */}
+          {/* Left — Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -38,39 +34,34 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#0f0f0f] border border-white/8">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
               <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                alt="Team collaboration"
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=85"
+                alt="Gigadroom team"
                 fill
-                className="object-cover opacity-70"
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
-
-              {/* Floating card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="absolute bottom-6 left-6 right-6 bg-[#080808]/90 backdrop-blur-xl border border-white/10 rounded-xl p-5"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-sm text-white/60">
-                    Currently taking on new projects
-                  </span>
-                </div>
-                <p className="text-white font-semibold text-sm">
-                  Softdroom Holdings Consulting Arm
-                </p>
-              </motion.div>
             </div>
 
-            {/* Decorative grid card */}
-            <div className="absolute -top-4 -right-4 w-32 h-32 bg-[#7c5cfc]/10 rounded-2xl border border-[#7c5cfc]/20 flex items-center justify-center -z-10">
-              <div className="w-16 h-16 bg-[#7c5cfc]/20 rounded-xl" />
-            </div>
+            {/* Floating card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="absolute -bottom-5 -right-5 bg-white border border-[#E5E5E5] rounded-2xl p-5 shadow-lg max-w-[220px]"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-xs text-[#6B6B6B]">Taking new projects</span>
+              </div>
+              <p className="text-[#0F0F0F] font-semibold text-sm leading-snug">
+                Softdroom Holdings
+                <br />
+                Consulting Arm
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* Right — Content */}
@@ -80,45 +71,44 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-[#7c5cfc] text-sm font-semibold tracking-widest uppercase mb-4">
+            <p className="text-[#888] text-xs font-semibold tracking-[0.15em] uppercase mb-5">
               About Us
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight leading-tight text-[#0F0F0F] mb-6">
               We don&apos;t just
               <br />
-              consult.{" "}
-              <span className="gradient-text">We build.</span>
+              consult. We build.
             </h2>
-            <p className="text-white/50 text-base leading-relaxed mb-8">
+            <p className="text-[#6B6B6B] text-base leading-relaxed mb-5">
               Gigadroom is the consulting and delivery arm of Softdroom
               Holdings. We work with startups and established businesses
               to turn ambitious ideas into real, revenue-generating digital
               products and systems.
             </p>
-            <p className="text-white/50 text-base leading-relaxed mb-10">
-              Whether you need to integrate AI into your operations, build
-              your first product from scratch, or overhaul your digital
-              presence — we handle the full journey, from first conversation
-              to live deployment.
+            <p className="text-[#6B6B6B] text-base leading-relaxed mb-10">
+              Whether you need AI integrated into your operations, your first
+              product built from scratch, or a complete overhaul of your
+              digital presence — we handle the full journey, from first
+              conversation to live deployment.
             </p>
 
             {/* Pillars */}
-            <div className="space-y-5">
+            <div className="space-y-6">
               {pillars.map((pillar, i) => (
                 <motion.div
                   key={pillar.title}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 + 0.3, duration: 0.4 }}
                   className="flex gap-4"
                 >
-                  <div className="mt-1 w-1 flex-shrink-0 rounded-full bg-gradient-to-b from-[#7c5cfc] to-transparent" />
+                  <div className="mt-[6px] w-[3px] flex-shrink-0 rounded-full bg-[#0F0F0F]" />
                   <div>
-                    <h4 className="text-white font-semibold text-sm mb-1">
+                    <h4 className="text-[#0F0F0F] font-semibold text-sm mb-1">
                       {pillar.title}
                     </h4>
-                    <p className="text-white/45 text-sm leading-relaxed">
+                    <p className="text-[#6B6B6B] text-sm leading-relaxed">
                       {pillar.description}
                     </p>
                   </div>
@@ -126,20 +116,14 @@ export default function About() {
               ))}
             </div>
 
-            {/* Softdroom link */}
-            <motion.a
+            <a
               href="https://www.softdroom.com"
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="mt-10 inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors"
+              className="mt-10 inline-flex items-center gap-1 text-sm text-[#888] hover:text-[#0F0F0F] transition-colors border-b border-[#DDD] pb-0.5 hover:border-[#0F0F0F]"
             >
-              Part of Softdroom Holdings
-              <ArrowUpRight size={14} />
-            </motion.a>
+              Part of Softdroom Holdings &rarr;
+            </a>
           </motion.div>
         </div>
       </div>
