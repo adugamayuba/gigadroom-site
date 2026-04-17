@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const serviceLabels: Record<string, string> = {
   ai: "AI Systems & Automation",
@@ -35,6 +37,7 @@ export default function Contact() {
     message: "",
   });
   const [formStarted, setFormStarted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleFormStart = () => {
     if (!formStarted) {
@@ -43,11 +46,29 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
 
     const serviceLabel = serviceLabels[form.service] || form.service || "Not specified";
     const budgetLabel = budgetLabels[form.budget] || form.budget || "Not specified";
+
+    // Save lead to Firestore
+    try {
+      await addDoc(collection(db, "leads"), {
+        name: form.name,
+        email: form.email,
+        company: form.company || null,
+        service: serviceLabel,
+        budget: budgetLabel,
+        message: form.message,
+        submittedAt: serverTimestamp(),
+        source: "gigadroom.com",
+      });
+    } catch (err) {
+      console.error("Firestore write failed:", err);
+      // Don't block the user — still open email
+    }
 
     track("form_submit", {
       service: serviceLabel,
@@ -65,7 +86,6 @@ export default function Contact() {
 
     const mailtoUrl = `mailto:hi@gigadroom.com?subject=${subject}&body=${body}`;
 
-    // Open the mail client without navigating away, then redirect to /done
     window.open(mailtoUrl, "_self");
     setTimeout(() => router.push("/done"), 300);
   };
@@ -282,9 +302,10 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#0F0F0F] hover:bg-[#2a2a2a] text-white font-semibold py-4 rounded-xl transition-all duration-200 text-sm"
+                  disabled={submitting}
+                  className="w-full bg-[#0F0F0F] hover:bg-[#2a2a2a] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl transition-all duration-200 text-sm"
                 >
-                  Send via Email
+                  {submitting ? "Sending…" : "Send"}
                 </button>
 
                 <p className="text-center text-xs text-[#AAAAAA]">
