@@ -23,7 +23,6 @@ const budgetLabels: Record<string, string> = {
   "25k-50k": "$25,000 – $50,000",
   "50k-100k": "$50,000 – $100,000",
   "100k+": "$100,000+",
-  unsure: "Not sure yet",
 };
 
 export default function Contact() {
@@ -314,7 +313,6 @@ export default function Contact() {
                       <option value="25k-50k">$25,000 – $50,000</option>
                       <option value="50k-100k">$50,000 – $100,000</option>
                       <option value="100k+">$100,000+</option>
-                      <option value="unsure">Not sure yet</option>
                     </select>
                   </div>
                 </div>
