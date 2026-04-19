@@ -31,6 +31,7 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     budget: "",
@@ -58,6 +59,7 @@ export default function Contact() {
       await addDoc(collection(db, "leads"), {
         name: form.name,
         email: form.email,
+        phone: form.phone || null,
         company: form.company || null,
         service: serviceLabel,
         budget: budgetLabel,
@@ -239,17 +241,31 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    value={form.company}
-                    onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    placeholder="Your company name"
-                    className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm placeholder:text-[#BEBEBE] focus:outline-none focus:border-[#0F0F0F] transition-all"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="+1 (000) 000-0000"
+                      className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm placeholder:text-[#BEBEBE] focus:outline-none focus:border-[#0F0F0F] transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      value={form.company}
+                      onChange={(e) => setForm({ ...form, company: e.target.value })}
+                      placeholder="Your company name"
+                      className="w-full bg-[#F7F7F5] border border-[#E5E5E5] rounded-xl px-4 py-3 text-[#0F0F0F] text-sm placeholder:text-[#BEBEBE] focus:outline-none focus:border-[#0F0F0F] transition-all"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
