@@ -140,7 +140,7 @@ export default function Contact() {
                     onClick={() => track("contact_click", { method: "phone", location: "contact_section" })}
                     className="text-[#0F0F0F] font-medium text-base hover:opacity-60 transition-opacity"
                   >
-                    +1 (276) 300-0906
+                    +1 (385) 699-0702
                   </a>
                 </div>
               </div>

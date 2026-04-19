@@ -42,7 +42,7 @@ export default function Footer() {
                 href="tel:+13856990702"
                 className="block text-white/40 hover:text-white text-sm transition-colors"
               >
-                +1 (276) 300-0906
+                +1 (385) 699-0702
               </a>
             </div>
           </div>
