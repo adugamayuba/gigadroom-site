@@ -171,7 +171,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right — Form */}
+          {/* Right — Form (desktop) / WhatsApp card (mobile) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -179,6 +179,34 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-3"
           >
+            {/* ── Mobile: WhatsApp CTA ── */}
+            <div className="lg:hidden mb-6">
+              <a
+                href="https://wa.me/12763000906?text=Hi%20Gigadroom%2C%20I%27d%20like%20to%20discuss%20a%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track("cta_click", { label: "WhatsApp Contact", location: "contact_mobile" })}
+                className="flex items-center justify-between gap-4 w-full bg-[#25D366] hover:bg-[#1ebe5d] transition-colors rounded-2xl px-6 py-5"
+              >
+                <div className="text-left">
+                  <p className="text-white font-bold text-base leading-tight">Chat with a Strategist</p>
+                  <p className="text-white/80 text-sm mt-0.5">Typically replies within minutes</p>
+                </div>
+                <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1.5C6.6 1.5 1.5 6.6 1.5 13c0 2.1.56 4.06 1.54 5.75L1.5 24.5l5.9-1.5A11.43 11.43 0 0 0 13 24.5c6.4 0 11.5-5.1 11.5-11.5S19.4 1.5 13 1.5Z" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="1.4"/>
+                    <path d="M9.2 8c-.28-.68-.95-.68-1.2 0l-.65 1.6c-.15.38 0 .87.28 1.13 1.33 1.72 2.93 3.32 4.65 4.65.26.2.75.43 1.13.28l1.6-.65c.68-.28.68-.95 0-1.2l-1.6-.65c-.28-.1-.65-.1-.9 0l-.65.65a7.24 7.24 0 0 1-2.19-2.19l.65-.65c.26-.26.26-.62 0-.9L9.2 8Z" fill="white"/>
+                  </svg>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-3 my-5">
+                <div className="flex-1 h-px bg-[#E5E5E5]" />
+                <span className="text-[#BBBBBB] text-xs font-medium">or fill in the form</span>
+                <div className="flex-1 h-px bg-[#E5E5E5]" />
+              </div>
+            </div>
+
             <div className="border border-[#E5E5E5] rounded-2xl p-8 bg-white">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
