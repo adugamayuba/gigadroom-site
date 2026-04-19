@@ -6,7 +6,7 @@ import { track } from "@vercel/analytics";
 
 export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
-  const phone = "12763000906";
+  const phone = "13856990702";
   const message = encodeURIComponent(
     "Hi Gigadroom! I'd like to discuss a project with your team."
   );

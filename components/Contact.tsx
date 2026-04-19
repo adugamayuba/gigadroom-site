@@ -135,7 +135,7 @@ export default function Contact() {
                     Phone / WhatsApp
                   </p>
                     <a
-                    href="tel:+12763000906"
+                    href="tel:+13856990702"
                     onClick={() => track("contact_click", { method: "phone", location: "contact_section" })}
                     className="text-[#0F0F0F] font-medium text-base hover:opacity-60 transition-opacity"
                   >
@@ -182,7 +182,7 @@ export default function Contact() {
             {/* ── Mobile: WhatsApp CTA ── */}
             <div className="lg:hidden mb-6">
               <a
-                href="https://wa.me/12763000906?text=Hi%20Gigadroom%2C%20I%27d%20like%20to%20discuss%20a%20project."
+                href="https://wa.me/13856990702?text=Hi%20Gigadroom%2C%20I%27d%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => track("cta_click", { label: "WhatsApp Contact", location: "contact_mobile" })}

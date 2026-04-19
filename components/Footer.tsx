@@ -39,7 +39,7 @@ export default function Footer() {
                 hi@gigadroom.com
               </a>
               <a
-                href="tel:+12763000906"
+                href="tel:+13856990702"
                 className="block text-white/40 hover:text-white text-sm transition-colors"
               >
                 +1 (276) 300-0906

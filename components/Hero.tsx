@@ -63,7 +63,7 @@ export default function Hero() {
 
           {/* Mobile: WhatsApp CTA */}
           <a
-            href="https://wa.me/12763000906?text=Hi%20Gigadroom%2C%20I%27d%20like%20to%20chat%20about%20a%20project."
+            href="https://wa.me/13856990702?text=Hi%20Gigadroom%2C%20I%27d%20like%20to%20chat%20about%20a%20project."
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => track("cta_click", { label: "WhatsApp Hero", location: "hero_mobile" })}

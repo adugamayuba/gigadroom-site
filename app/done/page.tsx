@@ -63,7 +63,7 @@ export default function DonePage() {
               hi@gigadroom.com
             </a>
             <a
-              href="https://wa.me/12763000906"
+              href="https://wa.me/13856990702"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 border border-[#E5E5E5] rounded-xl px-5 py-3 text-sm font-medium text-[#0F0F0F] hover:bg-[#F7F7F5] transition-colors w-full sm:w-auto justify-center"

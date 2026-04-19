@@ -119,7 +119,7 @@ const jsonLd = {
       description:
         "Gigadroom is a full-service consulting firm specialising in AI systems, digital presence, product design, and end-to-end app and web development.",
       email: "hi@gigadroom.com",
-      telephone: "+12763000906",
+      telephone: "+13856990702",
       parentOrganization: {
         "@type": "Organization",
         name: "Softdroom Holdings",
@@ -152,7 +152,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#service`,
       name: "Gigadroom",
       url: siteUrl,
-      telephone: "+12763000906",
+      telephone: "+13856990702",
       email: "hi@gigadroom.com",
       priceRange: "$$",
       serviceType: [
