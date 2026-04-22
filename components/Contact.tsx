@@ -243,9 +243,10 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
-                      Phone
+                      Phone *
                     </label>
                     <input
+                      required
                       type="tel"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -255,9 +256,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
-                      Company
+                      Company *
                     </label>
                     <input
+                      required
                       type="text"
                       value={form.company}
                       onChange={(e) => setForm({ ...form, company: e.target.value })}
@@ -270,9 +272,10 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
-                      Service Interest
+                      Service Interest *
                     </label>
                     <select
+                      required
                       value={form.service}
                       onChange={(e) => {
                         setForm({ ...form, service: e.target.value });
@@ -294,9 +297,10 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-[10px] text-[#888] font-semibold mb-2 uppercase tracking-[0.12em]">
-                      Budget Range
+                      Budget Range *
                     </label>
                     <select
+                      required
                       value={form.budget}
                       onChange={(e) => {
                         setForm({ ...form, budget: e.target.value });
