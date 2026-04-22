@@ -133,7 +133,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] text-[#888] font-semibold tracking-[0.15em] uppercase mb-1">
-                    Phone / WhatsApp
+                    Phone
                   </p>
                     <a
                     href="tel:+13856990702"
@@ -153,7 +153,7 @@ export default function Contact() {
               </div>
               <p className="text-[#6B6B6B] text-sm leading-relaxed">
                 We typically respond within a few hours. For urgent
-                inquiries, reach us on WhatsApp for a faster reply.
+                inquiries, give us a call for a faster reply.
               </p>
             </div>
 
@@ -172,7 +172,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right — Form (desktop) / WhatsApp card (mobile) */}
+          {/* Right — Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

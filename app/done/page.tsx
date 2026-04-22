@@ -63,16 +63,13 @@ export default function DonePage() {
               hi@gigadroom.com
             </a>
             <a
-              href="https://wa.me/13856990702"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="tel:+13856990702"
               className="flex items-center gap-2 border border-[#E5E5E5] rounded-xl px-5 py-3 text-sm font-medium text-[#0F0F0F] hover:bg-[#F7F7F5] transition-colors w-full sm:w-auto justify-center"
             >
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 1C3.91 1 1 3.91 1 7.5c0 1.17.31 2.27.85 3.22L1 14l3.37-.83A6.47 6.47 0 0 0 7.5 14C11.09 14 14 11.09 14 7.5S11.09 1 7.5 1Z" stroke="#0F0F0F" strokeWidth="1.25" strokeLinejoin="round"/>
-                <path d="M5.5 5.75c.1.5.4 1.5 1.25 2.25S8.5 9.4 9 9.5" stroke="#0F0F0F" strokeWidth="1.25" strokeLinecap="round"/>
+                <path d="M3 1.5C3 1.5 2 2 1.5 3.5 1 5 2 7 4 9s4 3 5.5 3.5c1.5.5 2-.5 2-.5l.5-2-2-1-.5 1s-1 0-2.5-1.5S5.5 6 5.5 6l1-.5-1-2-2.5 0z" stroke="#0F0F0F" strokeWidth="1.2" strokeLinejoin="round"/>
               </svg>
-              WhatsApp Us
+              +1 (385) 699-0702
             </a>
           </div>
 
