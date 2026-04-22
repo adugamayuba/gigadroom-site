@@ -52,28 +52,12 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          {/* Desktop: Start a Project */}
           <a
             href="#contact"
             onClick={() => track("cta_click", { label: "Start a Project", location: "hero" })}
-            className="hidden sm:inline-flex bg-white text-[#0F0F0F] font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-200 text-base"
+            className="bg-white text-[#0F0F0F] font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-200 text-base w-full sm:w-auto text-center"
           >
             Start a Project
-          </a>
-
-          {/* Mobile: WhatsApp CTA */}
-          <a
-            href="https://wa.me/13856990702?text=Hi%20Gigadroom%2C%20I%27d%20like%20to%20chat%20about%20a%20project."
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => track("cta_click", { label: "WhatsApp Hero", location: "hero_mobile" })}
-            className="sm:hidden inline-flex items-center gap-3 bg-[#25D366] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#1ebe5d] transition-all duration-200 text-base w-full justify-center"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 1C5.03 1 1 5.03 1 10c0 1.56.41 3.03 1.13 4.3L1 19l4.82-1.11A9 9 0 0 0 10 19c4.97 0 9-4.03 9-9s-4.03-9-9-9Z" fill="white" fillOpacity="0.25" stroke="white" strokeWidth="1.2"/>
-              <path d="M7.2 6.5c-.2-.5-.7-.5-.9 0l-.5 1.2c-.1.3 0 .7.2.9 1 1.3 2.2 2.5 3.5 3.5.3.2.6.3.9.2l1.2-.5c.5-.2.5-.7 0-.9L10.4 10c-.2-.1-.5-.1-.7 0l-.5.5a5.6 5.6 0 0 1-1.7-1.7l.5-.5c.2-.2.2-.5 0-.7L7.2 6.5Z" fill="white"/>
-            </svg>
-            Chat with a Strategist
           </a>
 
           <a
